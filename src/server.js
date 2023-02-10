@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config()
 import router from './routes/index.js';
+import * as models from './models/index.js';
 const { DB_PASSWORD, DB_SERVER, DB_USER } = process.env;
 
 const server = express();
