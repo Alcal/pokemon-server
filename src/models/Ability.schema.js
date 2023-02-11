@@ -1,6 +1,8 @@
 import { Schema } from 'mongoose';
+import Names from './utils/Names.schema.js';
+import SchemaBase from './utils/SchemaBase.schema.js';
 
-const Ability = new Schema({
+const Ability = new Schema([ SchemaBase, Names, {
   effect_changes: [
       {
           "effect_entries": [
@@ -58,24 +60,7 @@ const Ability = new Schema({
     name: "generation-iii",
     url: "https://pokeapi.co/api/v2/generation/3/"
   },
-  id: 1,
-  is_main_series: true,
-  name: "stench",
-  names: [{
-    language: {
-      name: "ja-Hrkt",
-      url: "https://pokeapi.co/api/v2/language/1/"
-    },
-    name: "あくしゅう"
-  }],
-  pokemon: [{
-    is_hidden: true,
-    pokemon: {
-      name: "gloom",
-      url: "https://pokeapi.co/api/v2/pokemon/44/"
-    },
-    slot: 3
-  }]
-});
+  is_main_series: Boolean,
+}]);
 
 export default Ability;

@@ -1,12 +1,11 @@
 import { Schema } from 'mongoose';
+import SchemaBase from './utils/SchemaBase.schema.js';
 
-const Language = new Schema({
-  api_id: Number,
+const Language = new Schema([ SchemaBase, {
   iso3166: String,
   iso639: String,
-  name: String,
   official: Boolean,
-})
+}]);
 
 Language.add({
   names: [{

@@ -1,16 +1,19 @@
 import { Schema } from 'mongoose';
-import Language from './Language.schema';
-import Stat from './Stat.schema';
-import Type from './Type.schema';
+import Language from './Language.schema.js';
+import MoveDamageClass from './MoveDamageClass.schema.js';
+import MoveTarget from './MoveTarget.schema.js';
+import Names from './utils/Names.schema.js';
+import Stat from './Stat.schema.js';
+import Type from './Type.schema.js';
+import SchemaBase from './utils/SchemaBase.schema.js';
+import MoveAilment from './MoveAilment.schema.js';
+import MoveCategory from './MoveCategory.schema.js';
 
-const Move = new Schema({
+const Move = new Schema([SchemaBase, Names, {
   accuracy: Number,
-  damage_class: {
-      "name": "physical",
-      "url": "https://pokeapi.co/api/v2/move-damage-class/2/"
-  },
-  "effect_chance": null,
-  "effect_changes": [],
+  damage_class: MoveDamageClass,
+  effect_chance: null,
+  effect_changes: [],
   effect_entries: [{
 		effect: String,
 		language: Language,
@@ -24,22 +27,10 @@ const Move = new Schema({
 				"url": "https://pokeapi.co/api/v2/version-group/17/"
 		}
 	}],
-  "generation": {
-      "name": "generation-i",
-      "url": "https://pokeapi.co/api/v2/generation/1/"
-  },
-  api_id: Number,
-  "machines": [],
   meta: {
-      "ailment": {
-          "name": "none",
-          "url": "https://pokeapi.co/api/v2/move-ailment/0/"
-      },
+    ailment: MoveAilment,
       ailment_chance: Number,
-      "category": {
-          "name": "damage",
-          "url": "https://pokeapi.co/api/v2/move-category/0/"
-      },
+      category: MoveCategory,
       crit_rate: Number,
       drain: Number,
       flinch_chance: Number,
@@ -50,26 +41,15 @@ const Move = new Schema({
       min_turns: Number,
       stat_chance: Number
   },
-  name: String,
-  names: [{
-		language: Language,
-		name: String,
-	}],
   power: Number,
   pp: Number,
   priority: Number,
+  type: Type,
+  target: MoveTarget,
   stat_changes: [{
 		change: Number,
 		stat: Stat,
 	}],
-  "super_contest_effect": {
-      "url": "https://pokeapi.co/api/v2/super-contest-effect/5/"
-  },
-  "target": {
-      "name": "selected-pokemon",
-      "url": "https://pokeapi.co/api/v2/move-target/10/"
-  },
-  type: Type,
-})
+}]);
 
 export default Move;
