@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
+import SchemaBase from './utils/SchemaBase.schema.js';
 import MoveDamageClass from './MoveDamageClass.schema.js';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
 
 const Type = new Schema([SchemaBase, Names, {
   move_damage_class: MoveDamageClass,

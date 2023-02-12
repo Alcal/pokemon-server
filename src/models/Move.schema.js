@@ -3,29 +3,22 @@ import Language from './Language.schema.js';
 import MoveDamageClass from './MoveDamageClass.schema.js';
 import MoveTarget from './MoveTarget.schema.js';
 import Names from './utils/Names.schema.js';
+import FlavorTextEntries from './utils/FlavorTextEntries.schema.js';
 import Stat from './Stat.schema.js';
 import Type from './Type.schema.js';
 import SchemaBase from './utils/SchemaBase.schema.js';
 import MoveAilment from './MoveAilment.schema.js';
 import MoveCategory from './MoveCategory.schema.js';
 
-const Move = new Schema([SchemaBase, Names, {
+const Move = new Schema([SchemaBase, Names, FlavorTextEntries, {
   accuracy: Number,
   damage_class: MoveDamageClass,
-  effect_chance: null,
+  effect_chance: Number,
   effect_changes: [],
   effect_entries: [{
 		effect: String,
 		language: Language,
 		short_effect: String
-	}],
-  flavor_text_entries: [{
-		flavor_text: String,
-		language: Language,
-		"version_group": {
-				"name": "sun-moon",
-				"url": "https://pokeapi.co/api/v2/version-group/17/"
-		}
 	}],
   meta: {
     ailment: MoveAilment,

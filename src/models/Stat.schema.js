@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
 import MoveDamageClass from './MoveDamageClass.schema.js';
 import SchemaBase from './utils/SchemaBase.schema.js';
+import Names from './utils/Names.schema.js';
 
 const Stat = new Schema([SchemaBase, Names], {
   game_index: Number,

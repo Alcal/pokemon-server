@@ -1,8 +1,10 @@
 import { Schema } from 'mongoose';
+import Generation from './Generation.schema.js';
+import FlavorTextEntries from './utils/FlavorTextEntries.schema.js';
 import Names from './utils/Names.schema.js';
 import SchemaBase from './utils/SchemaBase.schema.js';
 
-const Ability = new Schema([ SchemaBase, Names, {
+const Ability = new Schema([ SchemaBase, Names, FlavorTextEntries, {
   effect_changes: [
       {
           "effect_entries": [
@@ -45,21 +47,7 @@ const Ability = new Schema([ SchemaBase, Names, {
           "short_effect": "Has a 10% chance of making target Pokémon flinch with each hit."
       }
   ],
-  flavor_text_entries: [{
-    flavor_text: "Helps repel wild POKéMON.",
-    language: {
-        "name": "en",
-        "url": "https://pokeapi.co/api/v2/language/9/"
-    },
-    version_group: {
-        "name": "ruby-sapphire",
-        "url": "https://pokeapi.co/api/v2/version-group/5/"
-    }
-  }],
-  generation: {
-    name: "generation-iii",
-    url: "https://pokeapi.co/api/v2/generation/3/"
-  },
+  generation: Generation,
   is_main_series: Boolean,
 }]);
 
