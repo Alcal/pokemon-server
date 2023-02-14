@@ -6,13 +6,15 @@ import dotenv from 'dotenv';
 dotenv.config()
 import router from './routes/index.js';
 import * as models from './models/index.js';
+
 const { DB_PASSWORD, DB_SERVER, DB_USER } = process.env;
+mongoose.set('strictQuery', true);
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/admin`);
 
 const server = express();
 
 server.use(bodyParser.json());
 server.use(morgan('tiny'));
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/admin`);
 
 server.use('/', router)
 

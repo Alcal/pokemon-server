@@ -1,5 +1,4 @@
 import { Schema } from 'mongoose';
-import Language from './Language.schema.js';
 import MoveDamageClass from './MoveDamageClass.schema.js';
 import MoveTarget from './MoveTarget.schema.js';
 import Names from './utils/Names.schema.js';
@@ -9,17 +8,13 @@ import Type from './Type.schema.js';
 import SchemaBase from './utils/SchemaBase.schema.js';
 import MoveAilment from './MoveAilment.schema.js';
 import MoveCategory from './MoveCategory.schema.js';
+import EffectEntries from './utils/EffectEntries.schema.js';
 
-const Move = new Schema([SchemaBase, Names, FlavorTextEntries, {
+const Move = new Schema([SchemaBase, Names, FlavorTextEntries, EffectEntries, {
   accuracy: Number,
   damage_class: MoveDamageClass,
   effect_chance: Number,
   effect_changes: [],
-  effect_entries: [{
-		effect: String,
-		language: Language,
-		short_effect: String
-	}],
   meta: {
     ailment: MoveAilment,
       ailment_chance: Number,
