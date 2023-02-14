@@ -1,9 +1,8 @@
 import { Schema } from 'mongoose';
-import Language from '../Language.schema.js';
 
 export const Name = new Schema({
   name: String,
-  language: Language,
+  language: { type: Schema.Types.ObjectId, ref: 'Language'},
 })
 
 const Names = new Schema({

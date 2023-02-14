@@ -1,12 +1,11 @@
 import { Schema } from 'mongoose';
-import Language from './Language.schema.js';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const PokemonShape = new Schema([SchemaBase, Names, {
+const PokemonShape = new Schema([ApiSchemaBase, Names, {
   awesome_names: [{
     awesome_name: String,
-    language: Language,
+    language: { type: Schema.Types.ObjectId, ref: 'Language'},
   }],
 }]);
 

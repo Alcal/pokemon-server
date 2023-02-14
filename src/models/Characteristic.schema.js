@@ -1,10 +1,9 @@
 import { Schema } from 'mongoose';
-import Stat from './Stat.schema.js';
 import Descriptions from './utils/Descriptions.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const Characteristic = new Schema([SchemaBase, Descriptions, {
-  highest_stat: Stat,
+const Characteristic = new Schema([ApiSchemaBase, Descriptions, {
+  highest_stat: { type: Schema.Types.ObjectId, ref: 'Stat'},
   possible_values: [Number],
 }])
 

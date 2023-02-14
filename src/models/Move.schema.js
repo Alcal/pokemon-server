@@ -5,14 +5,14 @@ import Names from './utils/Names.schema.js';
 import FlavorTextEntries from './utils/FlavorTextEntries.schema.js';
 import Stat from './Stat.schema.js';
 import Type from './Type.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 import MoveAilment from './MoveAilment.schema.js';
 import MoveCategory from './MoveCategory.schema.js';
 import EffectEntries from './utils/EffectEntries.schema.js';
 
-const Move = new Schema([SchemaBase, Names, FlavorTextEntries, EffectEntries, {
+const Move = new Schema([ApiSchemaBase, Names, FlavorTextEntries, EffectEntries, {
   accuracy: Number,
-  damage_class: MoveDamageClass,
+  damage_class: { type: Schema.Types.ObjectId, ref: 'MoveDamageClass'},
   effect_chance: Number,
   effect_changes: [],
   meta: {

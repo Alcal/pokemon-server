@@ -1,16 +1,8 @@
 import { Schema } from 'mongoose';
-import Ability from './Ability.schema.js';
-import Move from './Move.schema.js';
-import Stat from './Stat.schema.js';
-import Type from './Type.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
-import VersionGroup from './VersionGroup.schema.js';
-import Version from './Version.schema.js';
-import MoveLearnMethod from './MoveLearnMethod.schema.js';
-import PokemonSpecies from './PokemonSpecies.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 import PokemonSprites from './utils/PokemonSprites.schema.js';
 
-const Pokemon = new Schema(SchemaBase, [{
+const Pokemon = new Schema(ApiSchemaBase, [{
   order: Number,
   weight: Number,
   height: Number,
@@ -19,32 +11,32 @@ const Pokemon = new Schema(SchemaBase, [{
 	stats: [{
     base_stat: Number,
     effort: Number,
-    stat: Stat,
+    stat: { type: Schema.Types.ObjectId, ref: 'Stat'},
   }],
   types: [{
     slot: Number,
-    type: Type,
+    type: { type: Schema.Types.ObjectId, ref: 'Type'},
   }],
   abilities: [{
-    ability: Ability,
+    ability: { type: Schema.Types.ObjectId, ref: 'Ability'},
     is_hidden: Boolean,
     slot: Number,
   }],
   game_indices: [{
     game_index: Number,
-    version: Version
+    version: { type: Schema.Types.ObjectId, ref: 'Version'}
   }],
   held_items: [],
   location_area_encounters: "https://pokeapi.co/api/v2/pokemon/1/encounters",
   moves: [{
-    move: Move,
+    move: { type: Schema.Types.ObjectId, ref: 'Move'},
     version_group_details: [{
 			level_learned_at: Number,
-			move_learn_method: MoveLearnMethod,
-			version_group: VersionGroup,
+			move_learn_method: { type: Schema.Types.ObjectId, ref: 'MoveLearnMethod'},
+			version_group: { type: Schema.Types.ObjectId, ref: 'VersionGroup'},
     }]
 	}],
-  species: PokemonSpecies,
+  species: { type: Schema.Types.ObjectId, ref: 'PokemonSpecies'},
   sprites: new Schema([PokemonSprites, {
 		"other": {
 			"dream_world": PokemonSprites,

@@ -1,10 +1,9 @@
 import { Schema } from 'mongoose';
-import Language from '../Language.schema.js';
 
 const EffectEntries = new Schema({
   effect_entries: [{
     effect: String,
-    language: Language,
+    language: { type: Schema.Types.ObjectId, ref: 'Language'},
     short_effect: String
   }],
 });

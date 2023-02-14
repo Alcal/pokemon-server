@@ -1,10 +1,10 @@
 import { Schema } from 'mongoose';
 import Descriptions from './utils/Descriptions.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 import Names from './utils/Names.schema.js';
 
 const MoveTarget = new Schema([
-  SchemaBase,
+  ApiSchemaBase,
   Names,
   Descriptions,
 ])

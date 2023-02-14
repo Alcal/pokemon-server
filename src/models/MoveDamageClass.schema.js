@@ -1,10 +1,10 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
 import Descriptions from './utils/Descriptions.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
 const MoveDamageClass = new Schema([
-  SchemaBase,
+  ApiSchemaBase,
   Names,
   Descriptions,
 ]);

@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const Generation = new Schema([SchemaBase, Names]);
+const Generation = new Schema([ApiSchemaBase, Names]);
 
 export default Generation;

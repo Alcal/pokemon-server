@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const EvolutionTrigger = new Schema([SchemaBase, Names]);
+const EvolutionTrigger = new Schema([ApiSchemaBase, Names]);
 
 export default EvolutionTrigger;

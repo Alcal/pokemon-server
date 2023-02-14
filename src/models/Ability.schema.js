@@ -1,12 +1,11 @@
 import { Schema } from 'mongoose';
-import Generation from './Generation.schema.js';
 import EffectEntries from './utils/EffectEntries.schema.js';
 import FlavorTextEntries from './utils/FlavorTextEntries.schema.js';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const Ability = new Schema([ SchemaBase, Names, FlavorTextEntries, EffectEntries, {
-  generation: Generation,
+const Ability = new Schema([ ApiSchemaBase, Names, FlavorTextEntries, EffectEntries, {
+  generation: { type: Schema.Types.ObjectId, ref: 'Generation'},
   is_main_series: Boolean,
 }]);
 

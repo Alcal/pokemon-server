@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const EggGroup = new Schema([SchemaBase, Names]);
+const EggGroup = new Schema([ApiSchemaBase, Names]);
 
 export default EggGroup;

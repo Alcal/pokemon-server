@@ -1,21 +1,17 @@
 import { Schema } from 'mongoose';
-import SchemaBase from './utils/SchemaBase.schema.js';
-import MoveDamageClass from './MoveDamageClass.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 import Names from './utils/Names.schema.js';
 
-const Type = new Schema([SchemaBase, Names, {
-  move_damage_class: MoveDamageClass,
-}])
-
-Type.add({
+const Type = new Schema([ApiSchemaBase, Names, {
+  move_damage_class: { type: Schema.Types.ObjectId, ref: 'MoveDamageClass'},
   damage_relations: {
-    double_damage_from: [Type],
-    double_damage_to: [Type],
-    half_damage_from: [Type],
-    half_damage_to: [Type],
-    no_damage_from: [Type],
-    no_damage_to: [Type],
+    double_damage_from: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
+    double_damage_to: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
+    half_damage_from: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
+    half_damage_to: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
+    no_damage_from: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
+    no_damage_to: [{ type: Schema.Types.ObjectId, ref: 'Type'}],
   }
-});
+}]);
 
 export default Type;

@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import Descriptions from './utils/Descriptions.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const MoveCategory = new Schema([SchemaBase, Descriptions]);
+const MoveCategory = new Schema([ApiSchemaBase, Descriptions]);
 
 export default MoveCategory;

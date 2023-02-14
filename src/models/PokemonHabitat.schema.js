@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const PokemonHabitat = new Schema([SchemaBase, Names, {}])
+const PokemonHabitat = new Schema([ApiSchemaBase, Names, {}])
 
 export default PokemonHabitat;

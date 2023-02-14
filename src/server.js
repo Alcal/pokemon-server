@@ -9,16 +9,16 @@ import * as models from './models/index.js';
 
 const { DB_PASSWORD, DB_SERVER, DB_USER } = process.env;
 mongoose.set('strictQuery', true);
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/admin`);
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/pokemon-db`);
 
 const server = express();
 
 server.use(bodyParser.json());
 server.use(morgan('tiny'));
 
-server.use('/', router)
+server.use('/v1', router)
 
-server.use((err, req, res) => {
+server.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);

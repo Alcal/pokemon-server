@@ -1,12 +1,11 @@
 import { Schema } from 'mongoose';
-import MoveDamageClass from './MoveDamageClass.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 import Names from './utils/Names.schema.js';
 
-const Stat = new Schema([SchemaBase, Names], {
+const Stat = new Schema([ApiSchemaBase, Names], {
   game_index: Number,
   is_battle_only: Boolean,
-  move_damage_class: MoveDamageClass,
+  move_damage_class: { type: Schema.Types.ObjectId, ref: 'MoveDamageClass'},
 })
 
 export default Stat

@@ -1,10 +1,9 @@
 import { Schema } from 'mongoose';
 import Names from './utils/Names.schema.js';
-import SchemaBase from './utils/SchemaBase.schema.js';
-import VersionGroup from './VersionGroup.schema.js';
+import ApiSchemaBase from './utils/ApiSchemaBase.schema.js';
 
-const Version = new Schema([SchemaBase, Names, {
-  version_group: VersionGroup,
+const Version = new Schema([ApiSchemaBase, Names, {
+  version_group: { type: Schema.Types.ObjectId, ref: 'VersionGroup'},
 }]);
 
 export default Version;
